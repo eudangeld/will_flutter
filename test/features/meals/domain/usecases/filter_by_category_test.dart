@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:will_flutter/features/meals/domain/entities/meal.dart';
 import 'package:will_flutter/features/meals/domain/usecases/filter_by_categorie.dart';
 
-import 'meals_repository_mock.mocks.dart';
+import 'build_runner_mocks.mocks.dart';
 
 void main() {
   late FilterByCategorie useCase;

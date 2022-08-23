@@ -4,7 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:will_flutter/features/meals/domain/entities/categorie.dart';
 import 'package:will_flutter/features/meals/domain/usecases/get_categories.dart';
 
-import 'meals_repository_mock.mocks.dart';
+import 'build_runner_mocks.mocks.dart';
 
 void main() {
   late GetCategories useCase;
