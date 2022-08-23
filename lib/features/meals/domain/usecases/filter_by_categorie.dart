@@ -2,16 +2,16 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:will_flutter/core/error/failures.dart';
 import 'package:will_flutter/core/usecases/usecase.dart';
-import 'package:will_flutter/features/meals/domain/entities/meal_filtered.dart';
+import 'package:will_flutter/features/meals/domain/entities/meal.dart';
 import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
 
-class FilterByCategorie implements UseCase<List<Mealfiltered>, Params> {
+class FilterByCategorie implements UseCase<List<Meal>, Params> {
   final MealRepository repository;
 
   FilterByCategorie(this.repository);
 
   @override
-  Future<Either<Failure, List<Mealfiltered>>> call(Params params) async {
+  Future<Either<Failure, List<Meal>>> call(Params params) async {
     return await repository.filterByCategory(category: params.categorieName);
   }
 }

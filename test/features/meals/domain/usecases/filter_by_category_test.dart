@@ -1,21 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:will_flutter/features/meals/domain/entities/meal_filtered.dart';
-import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
+import 'package:will_flutter/features/meals/domain/entities/meal.dart';
 import 'package:will_flutter/features/meals/domain/usecases/filter_by_categorie.dart';
 
-import 'get_categories_dart_test.mocks.dart';
+import 'meals_repository_mock.mocks.dart';
 
-@GenerateMocks([MealRepository])
 void main() {
   late FilterByCategorie useCase;
   late MockMealRepository mockedMealRepository;
 
   const tTitleFilter = 'TestCategorie title';
 
-  const tFiltered = Mealfiltered(
+  const tFiltered = Meal(
       id: '1',
       title: 'Result filtered',
       thumbnail: 'https://www.themealdb.com/images/category/beef.png');
