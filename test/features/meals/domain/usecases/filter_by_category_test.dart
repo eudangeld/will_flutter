@@ -1,0 +1,51 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:will_flutter/core/error/failures.dart';
+import 'package:will_flutter/features/meals/domain/entities/meal_filtered.dart';
+import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
+
+import 'get_categories_dart_test.mocks.dart';
+
+class FilterByCategorie {
+  final MockMealRepository repository;
+
+  FilterByCategorie(this.repository);
+
+  Future<Either<Failure, List<Mealfiltered>>> call(String categorieName) async {
+    return await repository.filterByCategory(categorieName);
+  }
+}
+
+@GenerateMocks([MealRepository])
+void main() {
+  late FilterByCategorie useCase;
+  late MockMealRepository mockedMealRepository;
+
+  const tTitleFilter = 'TestCategorie title';
+
+  const tFiltered = Mealfiltered(
+      id: '1',
+      title: 'Result filtered',
+      thumbnail: 'https://www.themealdb.com/images/category/beef.png');
+
+  const tResult = [tFiltered];
+
+  group('Meal filterBy test group', () {
+    setUp(() {
+      mockedMealRepository = MockMealRepository();
+      useCase = FilterByCategorie(mockedMealRepository);
+    });
+
+    test('Should fielter by categorie name', () async {
+      when(mockedMealRepository.filterByCategory(tTitleFilter))
+          .thenAnswer((_) => Future.value(const Right(tResult)));
+
+      final result = await useCase(tTitleFilter);
+
+      result.fold(
+          (_) {}, ((rightResult) => expectLater(rightResult, [tFiltered])));
+    });
+  });
+}
