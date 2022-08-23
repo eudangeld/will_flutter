@@ -21,7 +21,7 @@ void main() {
 
   const mealCategories = [categorie];
 
-  group('Meal categorietetst suite', () {
+  group('Meal categorie test group', () {
     setUp(() {
       mockedMealRepository = MockMealRepository();
       useCase = GetCategories(mockedMealRepository);
