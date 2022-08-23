@@ -10,6 +10,7 @@ class FilterByCategorie implements UseCase<List<Mealfiltered>, Params> {
 
   FilterByCategorie(this.repository);
 
+  @override
   Future<Either<Failure, List<Mealfiltered>>> call(Params params) async {
     return await repository.filterByCategory(category: params.categorieName);
   }
