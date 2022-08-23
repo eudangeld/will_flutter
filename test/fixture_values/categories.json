@@ -1,0 +1,10 @@
+{
+    "categories": [
+        {
+            "idCategory": "1",
+            "strCategory": "Title test",
+            "strCategoryThumb": "TetThumb",
+            "strCategoryDescription": "Test description"
+        }
+    ]
+}
