@@ -1,14 +1,22 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:will_flutter/core/error/failures.dart';
+import 'package:will_flutter/core/usecases/usecase.dart';
 import 'package:will_flutter/features/meals/domain/entities/meal_categorie.dart';
 import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
 
-class GetCategories {
+class GetCategories implements UseCase<List<MealCategorie>, NoParams> {
   final MealRepository repository;
 
   GetCategories(this.repository);
 
-  Future<Either<Failure, List<MealCategorie>>> call() async {
+  @override
+  Future<Either<Failure, List<MealCategorie>>> call(NoParams params) async {
     return await repository.getCategories();
   }
+}
+
+class NoParams extends Equatable {
+  @override
+  List<Object?> get props => [];
 }
