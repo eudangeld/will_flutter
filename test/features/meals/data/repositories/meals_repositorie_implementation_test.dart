@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:will_flutter/core/error/exceptions.dart';
 import 'package:will_flutter/core/error/failures.dart';
 import 'package:will_flutter/core/platform/connectivity_info.dart';
 import 'package:will_flutter/features/meals/data/models/categories_list_model.dart';
@@ -24,22 +25,24 @@ class MealRepositoryImplementation implements MealRepository {
   @override
   Future<Either<Failure, List<Meal>>> filterByCategory(
       {required String category}) async {
-    final hasConnection = await networkInfo.hasConnection;
-    if (!hasConnection) {
-      print('Have no connection');
-    }
+    await networkInfo.hasConnection;
 
-    return Right(await remoteDataSource.filterByCategory(category: category));
+    try {
+      return Right(await remoteDataSource.filterByCategory(category: category));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 
   @override
   Future<Either<Failure, List<Categorie>>> getCategories() async {
-    final hasConnection = await networkInfo.hasConnection;
-    if (!hasConnection) {
-      print('Have no connection');
-    }
+    await networkInfo.hasConnection;
 
-    return Right(await remoteDataSource.getCategories());
+    try {
+      return Right(await remoteDataSource.getCategories());
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 }
 
@@ -55,7 +58,7 @@ void main() {
         networkInfo: netInfo, remoteDataSource: dataSource);
   });
 
-  group('Categories With connection', () {
+  group('Categories ', () {
     const tCategorie = Categorie(
         id: '1',
         title: 'Testcategorie',
@@ -78,8 +81,15 @@ void main() {
         (rightResul) => expect(rightResul, [tCategorie]),
       );
     });
+    test('Should fail with ServerFailure ', () async {
+      when(dataSource.getCategories())
+          .thenAnswer((_) async => throw ServerException('message'));
+      final result = await sutRepository.getCategories();
+      result.fold(((leftResult) => {expect(leftResult, isA<ServerFailure>())}),
+          (_) => {});
+    });
   });
-  group('Filter meals by categorie with connection', () {
+  group('Filter meals by categorie', () {
     const tMeal = Meal(
         id: '1',
         title: 'Testcmeal',
@@ -101,6 +111,15 @@ void main() {
         ((_) => {}),
         (rightResul) => expect(rightResul[0], tMeal),
       );
+    });
+
+    test('Should fail with ServerFailure ', () async {
+      when(dataSource.filterByCategory(category: tMeal.title))
+          .thenAnswer((_) async => throw ServerException('message'));
+      final result =
+          await sutRepository.filterByCategory(category: tMeal.title);
+      result.fold(((leftResult) => {expect(leftResult, isA<ServerFailure>())}),
+          (_) => {});
     });
   });
 }
