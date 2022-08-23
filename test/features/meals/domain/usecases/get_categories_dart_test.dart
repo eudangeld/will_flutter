@@ -31,7 +31,7 @@ void main() {
       when(mockedMealRepository.getCategories())
           .thenAnswer((_) => Future.value(const Right(mealCategories)));
 
-      final result = await useCase();
+      final result = await useCase(NoParams());
 
       result.fold((_) {},
           ((categoriesResult) => expect(categoriesResult, mealCategories)));
