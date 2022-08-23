@@ -29,7 +29,7 @@ void main() {
     });
 
     test('Should fielter by categorie name', () async {
-      when(mockedMealRepository.filterByCategory(tTitleFilter))
+      when(mockedMealRepository.filterByCategory(category: tTitleFilter))
           .thenAnswer((_) => Future.value(const Right(tResult)));
 
       final result = await useCase(tTitleFilter);

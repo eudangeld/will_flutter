@@ -9,6 +9,6 @@ class FilterByCategorie {
   FilterByCategorie(this.repository);
 
   Future<Either<Failure, List<Mealfiltered>>> call(String categorieName) async {
-    return await repository.filterByCategory(categorieName);
+    return await repository.filterByCategory(category: categorieName);
   }
 }
