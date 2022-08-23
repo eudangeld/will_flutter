@@ -2,21 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:will_flutter/core/error/failures.dart';
 import 'package:will_flutter/features/meals/domain/entities/meal_categorie.dart';
 import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
+import 'package:will_flutter/features/meals/domain/usecases/get_categories.dart';
 
 import 'get_categories_dart_test.mocks.dart';
-
-class GetCategories {
-  final MealRepository repository;
-
-  GetCategories(this.repository);
-
-  Future<Either<Failure, List<MealCategorie>>> call() async {
-    return await repository.getCategories();
-  }
-}
 
 @GenerateMocks([MealRepository])
 void main() {
