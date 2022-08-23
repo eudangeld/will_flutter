@@ -32,7 +32,7 @@ void main() {
       when(mockedMealRepository.filterByCategory(category: tTitleFilter))
           .thenAnswer((_) => Future.value(const Right(tResult)));
 
-      final result = await useCase(tTitleFilter);
+      final result = await useCase(const Params(categorieName: tTitleFilter));
 
       result.fold(
           (_) {}, ((rightResult) => expectLater(rightResult, [tFiltered])));
