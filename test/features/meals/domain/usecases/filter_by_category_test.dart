@@ -36,6 +36,8 @@ void main() {
 
       result.fold(
           (_) {}, ((rightResult) => expectLater(rightResult, [tFiltered])));
+
+      verify(mockedMealRepository.filterByCategory(category: tTitleFilter));
     });
   });
 }
