@@ -80,4 +80,29 @@ void main() {
       );
     });
   });
+  group('Filter meals by categorie with connection', () {
+    const tTitleFilter = 'TestCategorie title';
+
+    const tFiltered = Meal(
+        id: '1',
+        title: 'Result filtered',
+        thumbnail: 'https://www.themealdb.com/images/category/beef.png');
+
+    const tResult = [tFiltered];
+
+    setUp(() {
+      when(netInfo.hasConnection).thenAnswer((_) async => true);
+    });
+
+    test('Should return categories data remote source ', () async {
+      when(dataSource.getCategories())
+          .thenAnswer((_) async => categorieModel.mealCategories);
+      final result = await sutRepository.getCategories();
+      verify(netInfo.hasConnection);
+      result.fold(
+        ((_) => {}),
+        (rightResul) => expect(rightResul, [tCategorie]),
+      );
+    });
+  });
 }
