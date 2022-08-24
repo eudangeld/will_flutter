@@ -20,7 +20,7 @@ void main() {
       thumbnail: "TetThumb",
       description: "Test description");
 
-  group('Accounts', () {
+  group('Catgories data source test group', () {
     const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 
     setUp(() {
