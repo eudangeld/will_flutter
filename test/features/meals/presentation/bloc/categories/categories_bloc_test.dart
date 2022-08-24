@@ -4,9 +4,9 @@ import 'package:mockito/mockito.dart';
 import 'package:will_flutter/core/error/failures.dart';
 import 'package:will_flutter/features/meals/domain/entities/categorie.dart';
 import 'package:will_flutter/features/meals/domain/usecases/get_categories.dart';
-import 'package:will_flutter/features/meals/presentation/bloc/categories_bloc.dart';
+import 'package:will_flutter/features/meals/presentation/bloc/categories/categories_bloc.dart';
 
-import '../../../../mocks/build_runner.mocks.dart';
+import '../../../../../mocks/build_runner.mocks.dart';
 
 void main() {
   late CategoriesBloc sut;
