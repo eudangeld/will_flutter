@@ -6,3 +6,14 @@ abstract class MealsEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetMealsCategoriesEvent extends MealsEvent {}
+
+class FilterByCategorie extends MealsEvent {
+  final String categorie;
+
+  const FilterByCategorie(this.categorie);
+
+  @override
+  List<Object> get props => [categorie];
+}
