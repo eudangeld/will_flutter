@@ -1,11 +1,14 @@
 # will_flutter
 
-A mealssimple project
+Flutter project with TDD and clean arch
 
 ## Solicitações de produto
 
--[ ] Liste todas as categorias de refeições.
--[ ] Ao clicar em uma categoria, liste todas as refeições daquela categoria.
+- [x] Liste todas as categorias de refeições.
+- [x] Ao clicar em uma categoria, liste todas as refeições daquela categoria.
+- [x] Ao menos 90% de cobertura de testes
+- [ ] Implementar telas que respondem aos erros do bloc
+- [ ] Implementar bootLoader
 
 [API - PATH](https://www.themealdb.com/)
 
