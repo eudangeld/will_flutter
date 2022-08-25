@@ -39,7 +39,8 @@ void main() {
           sut.stream,
           emitsInOrder([
             FilterLoadingState(),
-            const FilterLoadedState(meals: mealCategories)
+            FilterLoadedState(
+                filterString: mockedFilteredMeal.title, meals: mealCategories)
           ]));
     });
     test('Should emit  [ErrorState]]', () async {

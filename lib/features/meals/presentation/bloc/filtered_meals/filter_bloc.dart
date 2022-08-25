@@ -16,7 +16,8 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
           await filterMeals(Params(categorieName: event.categorieFilter));
       meals.fold(
         (leftResult) => emit(FilterErrorState()),
-        ((rightResult) => emit(FilterLoadedState(meals: rightResult))),
+        ((rightResult) => emit(FilterLoadedState(
+            filterString: event.categorieFilter, meals: rightResult))),
       );
     });
   }
