@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:will_flutter/core/platform/connectivity_info.dart';
-import 'package:will_flutter/core/usecases/usecase.dart';
 import 'package:will_flutter/features/meals/data/repositories/meals_repository_implementation.dart';
 import 'package:will_flutter/features/meals/data/sources/meals_remote_datasource.dart';
 import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart';
@@ -19,17 +18,23 @@ void categoriesBloc() {
   serviceLocator
       .registerFactory<CategoriesBloc>(() => CategoriesBloc(serviceLocator()));
 
-  serviceLocator
-      .registerLazySingleton<UseCase>(() => GetCategories(serviceLocator()));
+  serviceLocator.registerLazySingleton(() => GetCategories(serviceLocator()));
+
+  final connectionChecker = InternetConnectionCheckerPlus();
+  serviceLocator.registerLazySingleton(() => connectionChecker);
+
+  final dio = Dio();
+  serviceLocator.registerLazySingleton(() => dio);
+
+  serviceLocator.registerLazySingleton<ConnectivityInfo>(
+      () => ConnectivityInfoImplementation(connectionChecker));
 
   serviceLocator
       .registerLazySingleton<MealRepository>(() => MealRepositoryImplementation(
             networkInfo: serviceLocator(),
             remoteDataSource: serviceLocator(),
           ));
-  serviceLocator.registerLazySingleton<ConnectivityInfo>(
-      () => ConnectivityInfoImplementation(InternetConnectionChecker()));
 
   serviceLocator.registerLazySingleton<MealsRemoteDataSource>(
-      () => MealsRemotaDataSourceImplementation(Dio()));
+      () => MealsRemotaDataSourceImplementation(serviceLocator()));
 }
