@@ -1,7 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:will_flutter/features/meals/presentation/bloc/categories/categories_bloc.dart';
+import 'package:will_flutter/features/meals/presentation/widgets/base_scroll_config.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({Key? key}) : super(key: key);
@@ -21,12 +21,8 @@ class CategoriesPage extends StatelessWidget {
             BlocProvider.of<CategoriesBloc>(context).add(GetCategoriesEvent());
           }
           final categories = state.categories;
-          return ScrollConfiguration(
-            behavior: ScrollConfiguration.of(context).copyWith(dragDevices: {
-              PointerDeviceKind.touch,
-              PointerDeviceKind.mouse,
-            }),
-            child: ListView.builder(
+          return BaseScrollConfig(
+            ListView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
               itemCount: categories.length,
               itemBuilder: (BuildContext context, int index) =>
