@@ -7,7 +7,7 @@ class AppRoutes {
   static const FILTRED_ROUTE = '/filter';
 
   Map<String, WidgetBuilder> get routesBuilder => {
-        AppRoutes.HOME_ROUTE: ((context) => const CategoriesPage()),
-        AppRoutes.FILTRED_ROUTE: ((context) => const FilteredPage())
+        HOME_ROUTE: ((context) => const CategoriesPage()),
+        FILTRED_ROUTE: ((context) => const FilteredPage())
       };
 }
