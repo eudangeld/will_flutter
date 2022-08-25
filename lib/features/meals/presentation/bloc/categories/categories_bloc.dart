@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:will_flutter/features/meals/domain/entities/categorie.dart';
 import 'package:will_flutter/features/meals/domain/usecases/get_categories.dart';
 
