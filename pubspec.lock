@@ -263,6 +263,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.5"
   http_mock_adapter:
     dependency: "direct dev"
     description:
@@ -284,13 +291,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  internet_connection_checker:
+  internet_connection_checker_plus:
     dependency: "direct main"
     description:
-      name: internet_connection_checker
+      name: internet_connection_checker_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+4"
+    version: "1.0.1"
   io:
     dependency: transitive
     description:
@@ -529,4 +536,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.17.6 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.17.0"
