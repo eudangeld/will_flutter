@@ -1,4 +1,3 @@
-import 'package:will_flutter/features/meals/domain/entities/categorie.dart';
 import 'package:will_flutter/features/meals/domain/entities/meal.dart';
 
 class MealsListModel {
