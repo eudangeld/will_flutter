@@ -18,6 +18,8 @@ import 'package:will_flutter/features/meals/domain/entities/categorie.dart'
 import 'package:will_flutter/features/meals/domain/entities/meal.dart' as _i8;
 import 'package:will_flutter/features/meals/domain/repositories/meals_repository.dart'
     as _i4;
+import 'package:will_flutter/features/meals/domain/usecases/filter_by_categorie.dart'
+    as _i12;
 import 'package:will_flutter/features/meals/domain/usecases/get_categories.dart'
     as _i11;
 
@@ -203,4 +205,29 @@ class MockGetCategorieUseCase extends _i1.Mock implements _i11.GetCategories {
                   _FakeEither_0<_i6.Failure, List<_i7.Categorie>>(
                       this, Invocation.method(#call, [params])))) as _i5
           .Future<_i2.Either<_i6.Failure, List<_i7.Categorie>>>);
+}
+
+/// A class which mocks [FilterByCategorie].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFilterMealUseCase extends _i1.Mock implements _i12.FilterByCategorie {
+  MockFilterMealUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.MealRepository get repository =>
+      (super.noSuchMethod(Invocation.getter(#repository),
+              returnValue:
+                  _FakeMealRepository_3(this, Invocation.getter(#repository)))
+          as _i4.MealRepository);
+  @override
+  _i5.Future<_i2.Either<_i6.Failure, List<_i8.Meal>>> call(
+          _i12.Params? params) =>
+      (super.noSuchMethod(Invocation.method(#call, [params]),
+              returnValue:
+                  _i5.Future<_i2.Either<_i6.Failure, List<_i8.Meal>>>.value(
+                      _FakeEither_0<_i6.Failure, List<_i8.Meal>>(
+                          this, Invocation.method(#call, [params]))))
+          as _i5.Future<_i2.Either<_i6.Failure, List<_i8.Meal>>>);
 }

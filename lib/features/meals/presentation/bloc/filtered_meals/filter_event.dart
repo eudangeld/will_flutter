@@ -5,8 +5,8 @@ abstract class FilterEvent extends Equatable {
   const FilterEvent(this.categorieFilter);
 }
 
-class GetFilterEvent extends FilterEvent {
-  const GetFilterEvent(super.categorieFilter);
+class FilterMealsByCategorieEvent extends FilterEvent {
+  const FilterMealsByCategorieEvent(super.categorieFilter);
 
   @override
   List<Object?> get props => [categorieFilter];

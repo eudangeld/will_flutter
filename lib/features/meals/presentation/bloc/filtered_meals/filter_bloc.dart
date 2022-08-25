@@ -10,7 +10,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   final FilterByCategorie filterMeals;
 
   FilterBloc(this.filterMeals) : super(FilterEmptyState()) {
-    on<GetFilterEvent>((event, emit) async {
+    on<FilterMealsByCategorieEvent>((event, emit) async {
       emit(FilterLoadingState());
       final meals =
           await filterMeals(Params(categorieName: event.categorieFilter));
