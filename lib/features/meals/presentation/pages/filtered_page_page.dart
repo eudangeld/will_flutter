@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:will_flutter/features/meals/domain/entities/meal.dart';
-import 'package:will_flutter/features/meals/domain/usecases/filter_by_categorie.dart';
 import 'package:will_flutter/features/meals/presentation/bloc/filtered_meals/filter_bloc.dart';
 import 'package:will_flutter/features/meals/presentation/widgets/base_scroll_config.dart';
 
