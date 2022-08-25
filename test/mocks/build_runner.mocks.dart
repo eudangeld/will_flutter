@@ -6,7 +6,7 @@
 import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:internet_connection_checker/internet_connection_checker.dart'
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:will_flutter/core/error/failures.dart' as _i6;
@@ -119,11 +119,11 @@ class MockMealsRemoteDataSource extends _i1.Mock
           as _i5.Future<List<_i8.Meal>>);
 }
 
-/// A class which mocks [InternetConnectionChecker].
+/// A class which mocks [InternetConnectionCheckerPlus].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockInternetConnectionChecker extends _i1.Mock
-    implements _i3.InternetConnectionChecker {
+    implements _i3.InternetConnectionCheckerPlus {
   MockInternetConnectionChecker() {
     _i1.throwOnMissingStub(this);
   }
