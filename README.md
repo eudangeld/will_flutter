@@ -2,7 +2,7 @@
 
 Flutter project with TDD and clean arch
 
-## Solicitações de produto
+## Product requirements
 
 - [x] List all meal categories.
 - [x] When clicking on a category, list all meals in that category.
@@ -10,6 +10,6 @@ Flutter project with TDD and clean arch
 - [ ] Implement screens that respond to block errors
 - [ ] Implement bootLoader for application status init indicator
 
-## This project use The meal API
+### This project use The meal API
 
 [API - PATH](https://www.themealdb.com/)
