@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:will_flutter/features/meals/presentation/pages/categories_page.dart';
 import 'package:will_flutter/features/meals/presentation/pages/filtered_page_page.dart';
