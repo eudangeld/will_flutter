@@ -27,7 +27,8 @@ void main() {
     });
 
     test('InitalState should be FilterEmptyState ', () async {
-      expect(sut.state, equals(FilterEmptyState()));
+      expect(sut.state,
+          equals(FilterEmptyState(filterString: mockedFilteredMeal.title)));
     });
     test('Should emits ir order Loading and Loaded', () async {
       when(mockFilterMealsUseCase(
@@ -38,7 +39,7 @@ void main() {
       await expectLater(
           sut.stream,
           emitsInOrder([
-            FilterLoadingState(),
+            FilterLoadingState(filterString: mockedFilteredMeal.title),
             FilterLoadedState(
                 filterString: mockedFilteredMeal.title, meals: mealCategories)
           ]));
@@ -51,7 +52,11 @@ void main() {
       sut.add(FilterMealsByCategorieEvent(mockedFilteredMeal.title));
 
       await expectLater(
-          sut.stream, emitsInOrder([FilterLoadingState(), FilterErrorState()]));
+          sut.stream,
+          emitsInOrder([
+            FilterLoadingState(filterString: mockedFilteredMeal.title),
+            FilterErrorState(filterString: mockedFilteredMeal.title)
+          ]));
     });
   });
 }
