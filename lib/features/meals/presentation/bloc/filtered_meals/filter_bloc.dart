@@ -9,13 +9,15 @@ part 'filter_state.dart';
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
   final FilterByCategorie filterMeals;
 
-  FilterBloc(this.filterMeals) : super(FilterEmptyState()) {
+  FilterBloc(this.filterMeals)
+      : super(const FilterEmptyState(filterString: '')) {
     on<FilterMealsByCategorieEvent>((event, emit) async {
-      emit(FilterLoadingState());
+      emit(FilterLoadingState(filterString: event.categorieFilter));
       final meals =
           await filterMeals(Params(categorieName: event.categorieFilter));
       meals.fold(
-        (leftResult) => emit(FilterErrorState()),
+        (leftResult) =>
+            emit(FilterErrorState(filterString: event.categorieFilter)),
         ((rightResult) => emit(FilterLoadedState(
             filterString: event.categorieFilter, meals: rightResult))),
       );

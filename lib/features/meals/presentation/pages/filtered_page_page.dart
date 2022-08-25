@@ -10,8 +10,7 @@ class FilteredPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            BlocProvider.of<FilterBloc>(context).state.meals.length.toString()),
+        title: Text(BlocProvider.of<FilterBloc>(context).state.filterString),
       ),
       body: BlocBuilder<FilterBloc, FilterState>(
         builder: (context, state) {
