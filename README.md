@@ -49,4 +49,4 @@ flutter test
 
 #### Note
 
-Every push will start an basic action to check code basic of code quality
+Every push will start an basic action
